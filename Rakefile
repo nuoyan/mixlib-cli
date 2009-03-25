@@ -17,7 +17,7 @@ spec = Gem::Specification.new do |s|
   s.version = GEM_VERSION
   s.platform = Gem::Platform::RUBY
   s.has_rdoc = true
-  s.extra_rdoc_files = ["README.rdoc", "LICENSE", "NOTIFY" ]
+  s.extra_rdoc_files = ["README.rdoc", "LICENSE", "NOTICE" ]
   s.summary = SUMMARY
   s.description = s.summary
   s.author = AUTHOR
@@ -29,7 +29,7 @@ spec = Gem::Specification.new do |s|
   
   s.require_path = 'lib'
   s.autorequire = GEM
-  s.files = %w(LICENSE README.rdoc Rakefile NOTIFY) + Dir.glob("{lib,spec}/**/*")
+  s.files = %w(LICENSE README.rdoc Rakefile NOTICE) + Dir.glob("{lib,spec}/**/*")
 end
 
 task :default => :test
@@ -57,4 +57,9 @@ task :make_spec do
   File.open("#{GEM}.gemspec", "w") do |file|
     file.puts spec.to_ruby
   end
+end
+
+desc "remove build files"
+task :clean do
+  sh %Q{ rm -f pkg/*.gem }
 end
